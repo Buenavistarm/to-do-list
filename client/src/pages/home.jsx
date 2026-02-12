@@ -132,90 +132,65 @@ function home() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-white" style={{
+        <div className="min-h-screen flex items-center justify-center p-6" style={{
+            backgroundColor: '#030014',
             backgroundImage: `
-                linear-gradient(45deg, #000 25%, transparent 25%),
-                linear-gradient(-45deg, #000 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, #000 75%),
-                linear-gradient(-45deg, transparent 75%, #000 75%)
+                radial-gradient(circle at 10% 10%, rgba(255,0,150,0.06), transparent 10%),
+                linear-gradient(180deg, rgba(2,6,23,0.8), rgba(0,4,10,0.9)),
+                repeating-linear-gradient(0deg, rgba(0,255,200,0.02) 0 1px, transparent 1px 28px),
+                repeating-linear-gradient(90deg, rgba(255,0,150,0.02) 0 1px, transparent 1px 28px)
             `,
-            backgroundSize: '60px 60px',
-            backgroundPosition: '0 0, 0 30px, 30px -30px, -30px 0px',
-            backgroundColor: '#f5f5f5'
+            backgroundBlendMode: 'screen, normal, overlay, overlay',
+            backgroundSize: 'cover'
         }}>
-            <div className="p-6">
-                <div className="bg-white border-4 border-black p-8 rounded-3xl shadow-xl mb-8">
-                    <div className="flex justify-between items-center">
-                        <h1 className="text-4xl font-black text-black">My Tasks</h1>
-                        <button
-                            onClick={handleLogout}
-                            className="bg-black hover:bg-gray-900 text-white px-6 py-3 rounded-2xl transition-all shadow-lg active:scale-95 font-bold uppercase border-2 border-black"
-                        >
-                            Logout
-                        </button>
-                    </div>
-                </div>
+            <div className="w-full max-w-6xl mx-auto px-6">
+                <div className="bg-[linear-gradient(180deg,#071018,_#001018)] border border-pink-500/20 rounded-3xl p-8 shadow-[0_30px_80px_rgba(2,6,23,0.7)] backdrop-blur-sm" style={{boxShadow: '0 40px 120px rgba(0,0,0,0.7), inset 0 0 60px rgba(255,20,147,0.03)'}}>
 
-                {error && (
-                    <div className="bg-red-50 border-2 border-red-400 text-red-600 text-sm mb-6 p-4 rounded-2xl shadow-md animate-pulse font-bold">
-                        {error}
-                    </div>
-                )}
-
-                {success && (
-                    <div className="bg-green-50 border-2 border-green-400 text-green-700 text-sm mb-6 p-4 rounded-2xl shadow-md font-bold">
-                        {success}
-                    </div>
-                )}
-
-                <div className="bg-white border-4 border-black p-8 rounded-3xl shadow-xl">
-                    <div className="flex justify-between items-center mb-8">
-                        <div>
-                            <h2 className="text-3xl font-black text-black">Your Lists</h2>
-                            <p className="text-gray-700 text-sm mt-1 font-semibold uppercase">Manage and organize your tasks.</p>
+                    <div className="flex items-center justify-between mb-8">
+                        <div className="flex items-center gap-6">
+                            <h1 className="text-4xl font-black text-[#7af2d6]">My Tasks</h1>
+                            <div className="text-sm text-[#66f0b8] font-mono uppercase tracking-wide">Manage and organize your tasks.</div>
                         </div>
-                        <button
-                            onClick={() => setShowForm(true)}
-                            className="bg-black hover:bg-gray-900 text-white px-6 py-3 rounded-2xl transition-all shadow-xl active:scale-95 font-bold uppercase flex items-center gap-2 border-2 border-black"
-                        >
-                            <span className="text-xl leading-none">+</span> Add List
-                        </button>
+                        <div className="flex items-center gap-4">
+                            <button
+                                onClick={() => setShowForm(true)}
+                                className="px-5 py-3 bg-gradient-to-r from-[#ff4da6] to-[#66f0b8] text-black font-bold rounded-xl shadow-[0_10px_30px_rgba(102,240,184,0.12)] border border-transparent uppercase"
+                            >
+                                + Add List
+                            </button>
+                            <button
+                                onClick={handleLogout}
+                                className="px-5 py-3 bg-transparent text-[#9fffd6] font-bold rounded-xl border border-cyan-400/10 hover:bg-black/20 uppercase">
+                                Logout
+                            </button>
+                        </div>
                     </div>
+
+                    {error && (
+                        <div className="mb-6 px-4 py-3 rounded-md bg-black/40 border border-red-600 text-red-400 font-bold font-mono">{error}</div>
+                    )}
+
+                    {success && (
+                        <div className="mb-6 px-4 py-3 rounded-md bg-black/30 border border-green-600 text-green-300 font-bold font-mono">{success}</div>
+                    )}
 
                     {showForm && (
-                        <div className="mb-10 p-8 bg-gray-100 border-4 border-black rounded-3xl animate-in fade-in slide-in-from-top-4 duration-300">
-                            <h3 className="text-2xl font-black mb-6 text-black flex items-center gap-2">
-                                {editingItem ? (
-                                    <>
-                                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
-                                        </svg>
-                                        Edit List
-                                    </>
-                                ) : (
-                                    <>
-                                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
-                                            <path fillRule="evenodd" d="M4 5a2 2 0 012-2 1 1 0 000-2H6a4 4 0 100 8H4a1 1 0 100 2h2a2 2 0 012 2H4a4 4 0 01-4-4V5z"/>
-                                        </svg>
-                                        Create New List
-                                    </>
-                                )}
-                            </h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div className="mb-8 p-6 bg-[#001018] border border-pink-600/10 rounded-2xl shadow-inner">
+                            <h3 className="text-xl font-black mb-4 text-[#7af2d6] font-mono">{editingItem ? 'Edit List' : 'Create New List'}</h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
                                 <div>
-                                    <label className="block text-sm font-black mb-2 text-black uppercase">List Title</label>
+                                    <label className="block text-[11px] text-[#9fffd6] mb-2 uppercase">List Title</label>
                                     <input
                                         type="text"
-                                        className="w-full px-4 py-3 border-2 border-black rounded-2xl focus:outline-none focus:ring-2 focus:ring-black bg-white shadow-md transition-all"
+                                        className="w-full bg-[#00161a] text-[#7ef1c9] placeholder-[#2a6a63] px-4 py-3 rounded-md border border-transparent focus:outline-none font-mono"
                                         value={title}
                                         onChange={(e) => setTitle(e.target.value)}
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-black mb-2 text-black uppercase">Status</label>
+                                    <label className="block text-[11px] text-[#9fffd6] mb-2 uppercase">Status</label>
                                     <select
-                                        className="w-full px-4 py-3 border-2 border-black rounded-2xl focus:outline-none focus:ring-2 focus:ring-black bg-white shadow-md transition-all"
+                                        className="w-full bg-[#00161a] text-[#7ef1c9] px-4 py-3 rounded-md border border-transparent focus:outline-none font-mono"
                                         value={status}
                                         onChange={(e) => setStatus(e.target.value)}
                                     >
@@ -228,78 +203,72 @@ function home() {
                             </div>
                             <div className="flex justify-end gap-4">
                                 <button
-                                    onClick={() => {
-                                        setShowForm(false);
-                                        setEditingItem(null);
-                                        setTitle("");
-                                        setStatus("");
-                                    }}
-                                    className="px-6 py-3 bg-white text-black hover:bg-gray-200 border-2 border-black rounded-2xl transition-all font-bold uppercase"
+                                    onClick={() => { setShowForm(false); setEditingItem(null); setTitle(''); setStatus(''); }}
+                                    className="px-6 py-3 bg-transparent text-[#9fffd6] border border-cyan-400/10 rounded-md font-bold uppercase"
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     onClick={handleSubmit}
-                                    className="px-8 py-3 bg-black text-white hover:bg-gray-900 rounded-2xl transition-all shadow-lg font-bold active:scale-95 uppercase border-2 border-black"
+                                    className="px-6 py-3 bg-gradient-to-r from-[#ff4da6] to-[#66f0b8] text-black font-bold rounded-md uppercase shadow-lg"
                                 >
-                                    {editingItem ? "Update Changes" : "Create List"}
+                                    {editingItem ? 'Update Changes' : 'Create List'}
                                 </button>
                             </div>
                         </div>
                     )}
 
                     {lists.length === 0 ? (
-                        <div className="text-center py-16 bg-gray-200 rounded-3xl border-4 border-dashed border-black">
-                            <svg className="w-12 h-12 mx-auto mb-4 text-black" fill="currentColor" viewBox="0 0 20 20">
+                        <div className="text-center py-14 bg-transparent rounded-2xl border-2 border-dashed border-pink-600/20">
+                            <svg className="w-12 h-12 mx-auto mb-4 text-[#7af2d6]" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
                                 <path fillRule="evenodd" d="M4 5a2 2 0 012-2 1 1 0 000-2H6a4 4 0 100 8H4a1 1 0 100 2h2a2 2 0 012 2H4a4 4 0 01-4-4V5z"/>
                             </svg>
-                            <p className="text-black font-bold uppercase">No lists yet. Create your first list!</p>
+                            <p className="text-[#9fffd6] font-bold uppercase">No lists yet. Create your first list!</p>
                         </div>
                     ) : (
-                        <div className="overflow-hidden rounded-3xl border-4 border-black">
-                            <table className="w-full border-collapse">
+                        <div className="overflow-hidden rounded-2xl border border-pink-600/10 bg-[#001018]">
+                            <table className="w-full border-collapse text-sm font-mono text-[#9fffd6]">
                                 <thead>
-                                    <tr className="bg-black text-white">
-                                        <th className="px-6 py-4 text-left text-sm font-black uppercase tracking-wider">Title</th>
-                                        <th className="px-6 py-4 text-left text-sm font-black uppercase tracking-wider">Status</th>
-                                        <th className="px-6 py-4 text-center text-sm font-black uppercase tracking-wider">Actions</th>
+                                    <tr className="bg-black/40 text-[#7af2d6]">
+                                        <th className="px-6 py-4 text-left font-black uppercase tracking-wider">Title</th>
+                                        <th className="px-6 py-4 text-left font-black uppercase tracking-wider">Status</th>
+                                        <th className="px-6 py-4 text-center font-black uppercase tracking-wider">Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y-2 divide-black">
+                                <tbody className="divide-y divide-pink-800/10">
                                     {lists.map((item, index) => (
-                                        <tr key={item.id || index} className={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-100'} hover:bg-gray-300 transition-colors group border-l-4 border-l-black`}>
-                                            <td className="px-6 py-4 text-black font-bold">{item.title}</td>
+                                        <tr key={item.id || index} className={`${index % 2 === 0 ? 'bg-transparent' : 'bg-black/10'} hover:bg-black/20 transition-colors group`}>
+                                            <td className="px-6 py-4 text-[#c7f7e9] font-bold">{item.title}</td>
                                             <td className="px-6 py-4">
-                                                <span className={`px-3 py-1 rounded-full text-xs font-black uppercase ${item.status === 'Completed' ? 'bg-green-300 text-black border-2 border-black' :
-                                                    item.status === 'In Progress' ? 'bg-blue-300 text-black border-2 border-black' :
-                                                        'bg-yellow-300 text-black border-2 border-black'
-                                                    }`}>
+                                                <span className={`px-3 py-1 rounded-full text-xs font-black uppercase ${item.status === 'Completed' ? 'bg-green-500/20 text-[#9fffd6] border border-green-400/20' :
+                                                    item.status === 'In Progress' ? 'bg-blue-500/20 text-[#9fffd6] border border-blue-400/20' :
+                                                    'bg-yellow-500/20 text-[#9fffd6] border border-yellow-400/20'} `}>
                                                     {item.status}
                                                 </span>
                                             </td>
                                             <td className="px-6 py-4 text-center">
-                                                <div className="flex justify-center gap-2">
+                                                <div className="flex justify-center gap-3">
                                                     <button
                                                         onClick={() => handleOpen(item)}
-                                                        className="p-2 bg-black hover:bg-gray-800 text-white rounded-xl transition-all active:scale-90 border-2 border-black"
+                                                        className="px-3 py-2 bg-gradient-to-r from-[#ff4da6] to-[#66f0b8] text-black rounded-md font-bold border border-transparent"
                                                         title="Open"
                                                     >
-                                                        <span className="text-sm font-bold">View</span>
+                                                        View
                                                     </button>
                                                     <button
                                                         onClick={() => handleEdit(item)}
-                                                        className="p-2 bg-gray-300 hover:bg-gray-400 text-black rounded-xl transition-all active:scale-90 border-2 border-black font-bold"
+                                                        className="px-3 py-2 bg-transparent text-[#9fffd6] rounded-md border border-cyan-400/10 font-bold"
                                                         title="Edit"
                                                     >
-                                                        <span className="text-sm">Edit</span>
+                                                        Edit
                                                     </button>
                                                     <button
                                                         onClick={() => handleDelete(item.id)}
-                                                        className="p-2 bg-red-300 hover:bg-red-400 text-black rounded-xl transition-all active:scale-90 border-2 border-black font-bold"
+                                                        className="px-3 py-2 bg-red-500/10 text-[#ffd3a0] rounded-md border border-red-400/10 font-bold"
                                                         title="Delete"
                                                     >
-                                                        <span className="text-sm">Delete</span>
+                                                        Delete
                                                     </button>
                                                 </div>
                                             </td>
@@ -309,7 +278,6 @@ function home() {
                             </table>
                         </div>
                     )}
-
 
                 </div>
             </div>

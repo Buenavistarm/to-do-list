@@ -43,93 +43,104 @@ function register() {
     };
 
     return (
-        <div className="min-h-screen bg-white flex items-center justify-center p-4" style={{
+        <div className="min-h-screen flex items-center justify-center p-6" style={{
+            backgroundColor: '#030014',
             backgroundImage: `
-                linear-gradient(45deg, #000 25%, transparent 25%),
-                linear-gradient(-45deg, #000 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, #000 75%),
-                linear-gradient(-45deg, transparent 75%, #000 75%)
+                radial-gradient(circle at 10% 10%, rgba(255,0,150,0.06), transparent 10%),
+                linear-gradient(180deg, rgba(2,6,23,0.8), rgba(0,4,10,0.9)),
+                repeating-linear-gradient(0deg, rgba(0,255,200,0.02) 0 1px, transparent 1px 28px),
+                repeating-linear-gradient(90deg, rgba(255,0,150,0.02) 0 1px, transparent 1px 28px)
             `,
-            backgroundSize: '60px 60px',
-            backgroundPosition: '0 0, 0 30px, 30px -30px, -30px 0px',
-            backgroundColor: '#f5f5f5'
+            backgroundBlendMode: 'screen, normal, overlay, overlay',
+            backgroundSize: 'cover'
         }}>
-            <div className="w-full max-w-sm">
-                <div className="bg-white border-4 border-black rounded-3xl p-6 shadow-xl">
-                    <h1 className="text-2xl font-bold text-center mb-2 text-black">Create Account</h1>
-                    <p className="text-center text-gray-700 text-sm mb-6 font-semibold">Join us today!</p>
-
-                    {error && (
-                        <p className="text-red-600 text-sm mb-4 bg-red-50 p-3 rounded-2xl border-2 border-red-300 font-semibold">{error}</p>
-                    )}
-
-                    <form onSubmit={handleRegister}>
-                        <div className="mb-4">
-                            <label className="block text-sm font-bold mb-1 text-black uppercase">Full Name</label>
-                            <input
-                                type="text"
-                                className="w-full px-4 py-2 border-2 border-black rounded-2xl focus:outline-none focus:ring-2 focus:ring-black bg-white"
-                                value={name}
-                                onChange={(e) => {
-                                    setName(e.target.value);
-                                    if (error) setError('');
-                                }}
-                            />
+            <div className="w-full max-w-2xl mx-auto px-6">
+                <div className="bg-[linear-gradient(180deg,#071018,_#001018)] border border-pink-500/20 rounded-3xl p-8 shadow-[0_30px_80px_rgba(2,6,23,0.7)] backdrop-blur-sm flex gap-8 items-center" style={{boxShadow: '0 40px 120px rgba(0,0,0,0.7), inset 0 0 60px rgba(255,20,147,0.03)'}}>
+                    <div className="w-full text-left font-mono text-sm text-[#9fffd6]">
+                        <div className="flex items-center justify-between mb-6">
+                            <div className="flex items-center gap-3">
+                                <div className="w-3 h-3 rounded-full bg-[#ff4da6] shadow-[0_0_12px_rgba(255,77,166,0.5)]"></div>
+                                <div className="w-3 h-3 rounded-full bg-[#ffd34d] shadow-[0_0_12px_rgba(255,211,77,0.35)]"></div>
+                                <div className="w-3 h-3 rounded-full bg-[#4dffec] shadow-[0_0_12px_rgba(77,255,236,0.35)]"></div>
+                            </div>
+                            <div className="text-[12px] text-[#7af2d6] opacity-90">rm@to-do:~</div>
                         </div>
 
-                        <div className="mb-4">
-                            <label className="block text-sm font-bold mb-1 text-black uppercase">Username</label>
-                            <input
-                                type="text"
-                                className="w-full px-4 py-2 border-2 border-black rounded-2xl focus:outline-none focus:ring-2 focus:ring-black bg-white"
-                                value={username}
-                                onChange={(e) => {
-                                    setUsername(e.target.value);
-                                    if (error) setError('');
-                                }}
-                            />
-                        </div>
+                        <h1 className="text-2xl font-bold text-[#7af2d6] mb-2">create account</h1>
+                        <div className="mb-4 text-[#66f0b8]">register a new user <span className="inline-block w-2 h-5 bg-[#66f0b8] ml-2 align-middle animate-pulse" /></div>
 
-                        <div className="mb-4">
-                            <label className="block text-sm font-bold mb-1 text-black uppercase">Password</label>
-                            <input
-                                type="password"
-                                className="w-full px-4 py-2 border-2 border-black rounded-2xl focus:outline-none focus:ring-2 focus:ring-black bg-white"
-                                value={password}
-                                onChange={(e) => {
-                                    setPassword(e.target.value);
-                                    if (error) setError('');
-                                }}
-                            />
-                        </div>
+                        {error && (
+                            <div className="mb-4 px-3 py-2 rounded-md bg-black/50 border border-red-600 text-red-400 font-bold">{error}</div>
+                        )}
 
-                        <div className="mb-5">
-                            <label className="block text-sm font-bold mb-1 text-black uppercase">Confirm Password</label>
-                            <input
-                                type="password"
-                                className="w-full px-4 py-2 border-2 border-black rounded-2xl focus:outline-none focus:ring-2 focus:ring-black bg-white"
-                                value={confirmPass}
-                                onChange={(e) => {
-                                    setConfirmPass(e.target.value);
-                                    if (error) setError('');
-                                }}
-                            />
-                        </div>
+                        <form onSubmit={handleRegister} className="space-y-4">
+                            <div>
+                                <label className="block text-[11px] text-[#9fffd6] mb-2 uppercase">full name</label>
+                                <input
+                                    type="text"
+                                    className="w-full bg-[#00161a] text-[#7ef1c9] placeholder-[#2a6a63] px-4 py-2 rounded-md border border-transparent focus:outline-none font-mono"
+                                    placeholder="RM Grencio"
+                                    value={name}
+                                    onChange={(e) => {
+                                        setName(e.target.value);
+                                        if (error) setError('');
+                                    }}
+                                />
+                            </div>
 
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className="w-full py-3 bg-black text-white rounded-2xl hover:bg-gray-900 disabled:opacity-50 disabled:cursor-not-allowed font-bold uppercase transition-all active:scale-95 border-2 border-black"
-                        >
-                            {loading ? 'Creating account...' : 'Create Account'}
-                        </button>
-                    </form>
+                            <div>
+                                <label className="block text-[11px] text-[#9fffd6] mb-2 uppercase">username</label>
+                                <input
+                                    type="text"
+                                    className="w-full bg-[#00161a] text-[#7ef1c9] placeholder-[#2a6a63] px-4 py-2 rounded-md border border-transparent focus:outline-none font-mono"
+                                    placeholder="user123"
+                                    value={username}
+                                    onChange={(e) => {
+                                        setUsername(e.target.value);
+                                        if (error) setError('');
+                                    }}
+                                />
+                            </div>
 
-                    <div className="mt-4 text-center text-sm text-gray-700 font-semibold">
-                        Already have an account?{' '}
-                        <a href="/" className="text-black hover:underline font-bold">
-                            Login here
-                        </a>
+                            <div>
+                                <label className="block text-[11px] text-[#9fffd6] mb-2 uppercase">password</label>
+                                <input
+                                    type="password"
+                                    className="w-full bg-[#00161a] text-[#7ef1c9] placeholder-[#2a6a63] px-4 py-2 rounded-md border border-transparent focus:outline-none font-mono"
+                                    placeholder="••••••••"
+                                    value={password}
+                                    onChange={(e) => {
+                                        setPassword(e.target.value);
+                                        if (error) setError('');
+                                    }}
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-[11px] text-[#9fffd6] mb-2 uppercase">confirm password</label>
+                                <input
+                                    type="password"
+                                    className="w-full bg-[#00161a] text-[#7ef1c9] placeholder-[#2a6a63] px-4 py-2 rounded-md border border-transparent focus:outline-none font-mono"
+                                    placeholder="••••••••"
+                                    value={confirmPass}
+                                    onChange={(e) => {
+                                        setConfirmPass(e.target.value);
+                                        if (error) setError('');
+                                    }}
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="w-full py-3 text-black font-bold uppercase rounded-md transition-all"
+                                style={{background: 'linear-gradient(90deg,#ff4da6,#66f0b8)', boxShadow: '0 8px 30px rgba(102,240,184,0.14), 0 0 40px rgba(255,77,166,0.12)'}}
+                            >
+                                {loading ? 'creating...' : 'create account'}
+                            </button>
+                        </form>
+
+                        <div className="mt-5 text-[12px] text-[#7af2d6] opacity-90">Already have an account? <a href="/" className="text-[#ffd34d] underline">login</a></div>
                     </div>
                 </div>
             </div>

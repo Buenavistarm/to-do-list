@@ -98,25 +98,24 @@ function ListItem() {
 
     if (!listId) {
         return (
-            <div className="min-h-screen bg-white flex flex-col items-center justify-center p-6" style={{
+            <div className="min-h-screen flex flex-col items-center justify-center p-6" style={{
+                backgroundColor: '#030014',
                 backgroundImage: `
-                    linear-gradient(45deg, #000 25%, transparent 25%),
-                    linear-gradient(-45deg, #000 25%, transparent 25%),
-                    linear-gradient(45deg, transparent 75%, #000 75%),
-                    linear-gradient(-45deg, transparent 75%, #000 75%)
+                    radial-gradient(circle at 10% 10%, rgba(255,0,150,0.06), transparent 10%),
+                    linear-gradient(180deg, rgba(2,6,23,0.8), rgba(0,4,10,0.9)),
+                    repeating-linear-gradient(0deg, rgba(0,255,200,0.02) 0 1px, transparent 1px 28px)
                 `,
-                backgroundSize: '60px 60px',
-                backgroundPosition: '0 0, 0 30px, 30px -30px, -30px 0px',
-                backgroundColor: '#f5f5f5'
+                backgroundBlendMode: 'screen, normal, overlay',
+                backgroundSize: 'cover'
             }}>
-                <div className="bg-white p-8 rounded-3xl shadow-xl text-center max-w-sm w-full border-4 border-black">
-                    <svg className="w-12 h-12 mx-auto mb-4 text-black" fill="currentColor" viewBox="0 0 20 20">
+                <div className="bg-[linear-gradient(180deg,#071018,_#001018)] border border-pink-500/20 p-8 rounded-3xl shadow-xl max-w-sm w-full text-center font-mono text-[#9fffd6]" style={{boxShadow: '0 30px 80px rgba(2,6,23,0.7)'}}>
+                    <svg className="w-12 h-12 mx-auto mb-4 text-[#7af2d6]" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd"/>
                     </svg>
-                    <p className="text-gray-700 mb-6 font-bold uppercase">No list selected. Choose a list from home.</p>
+                    <p className="mb-6 font-bold uppercase text-[#9fffd6]">No list selected. Choose a list from home.</p>
                     <button
                         onClick={() => navigate('/home')}
-                        className="w-full px-6 py-3 bg-black text-white hover:bg-gray-900 rounded-2xl transition-all shadow-lg font-bold active:scale-95 uppercase border-2 border-black"
+                        className="w-full px-6 py-3 bg-gradient-to-r from-[#ff4da6] to-[#66f0b8] text-black rounded-md font-bold shadow-lg uppercase"
                     >
                         Return to Home
                     </button>
@@ -126,170 +125,165 @@ function ListItem() {
     }
 
     return (
-        <div className="min-h-screen bg-white" style={{
+        <div className="min-h-screen flex items-center justify-center p-6" style={{
+            backgroundColor: '#030014',
             backgroundImage: `
-                linear-gradient(45deg, #000 25%, transparent 25%),
-                linear-gradient(-45deg, #000 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, #000 75%),
-                linear-gradient(-45deg, transparent 75%, #000 75%)
+                radial-gradient(circle at 10% 10%, rgba(255,0,150,0.06), transparent 10%),
+                linear-gradient(180deg, rgba(2,6,23,0.8), rgba(0,4,10,0.9)),
+                repeating-linear-gradient(0deg, rgba(0,255,200,0.02) 0 1px, transparent 1px 28px)
             `,
-            backgroundSize: '60px 60px',
-            backgroundPosition: '0 0, 0 30px, 30px -30px, -30px 0px',
-            backgroundColor: '#f5f5f5'
+            backgroundBlendMode: 'screen, normal, overlay',
+            backgroundSize: 'cover'
         }}>
-            <div className="p-6 max-w-4xl mx-auto">
-                <div className="bg-white border-4 border-black p-8 rounded-3xl shadow-xl mb-8">
-                    <div className="flex justify-between items-center gap-4">
-                        <div>
+            <div className="w-full max-w-4xl mx-auto px-6">
+                <div className="bg-[linear-gradient(180deg,#071018,_#001018)] border border-pink-500/20 rounded-3xl p-8 shadow-[0_30px_80px_rgba(2,6,23,0.7)] backdrop-blur-sm" style={{boxShadow: '0 40px 120px rgba(0,0,0,0.7), inset 0 0 60px rgba(255,20,147,0.03)'}}>
+
+                    <div className="flex items-center justify-between mb-8">
+                        <div className="flex items-center gap-4">
                             <button
                                 onClick={() => navigate('/home')}
-                                className="bg-gray-200 border-2 border-black text-black hover:bg-gray-300 px-4 py-2 rounded-xl transition-all shadow-md active:scale-95 font-bold uppercase flex items-center gap-2"
+                                className="px-3 py-2 bg-transparent text-[#9fffd6] border border-cyan-400/10 rounded-md font-mono hover:bg-black/10"
                             >
-                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="w-5 h-5 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd"/>
                                 </svg>
                                 Back
                             </button>
-                        </div>
-                        <div className="text-right">
-                            <h1 className="text-4xl font-black text-black mb-2">{listTitle}</h1>
-                            <p className="text-black text-sm font-bold uppercase whitespace-nowrap">Manage your items</p>
-                        </div>
-                    </div>
-                </div>
-
-                {error && (
-                    <div className="bg-red-50 border-2 border-red-400 text-red-600 text-sm mb-6 p-4 rounded-2xl shadow-md animate-pulse font-bold">
-                        {error}
-                    </div>
-                )}
-
-                {success && (
-                    <div className="bg-green-50 border-2 border-green-400 text-green-700 text-sm mb-6 p-4 rounded-2xl shadow-md font-bold">
-                        {success}
-                    </div>
-                )}
-
-                <div className="grid grid-cols-2 gap-8">
-                    {/* Add Item Section */}
-                    <div className="bg-white border-4 border-black p-8 rounded-3xl shadow-xl">
-                        <h2 className="text-2xl font-black mb-6 text-black flex items-center gap-2">
-                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                            </svg>
-                            Add New Task
-                        </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <div className="md:col-span-2">
-                                <label className="block text-sm font-black mb-2 text-black uppercase">Description</label>
-                                <input
-                                    type="text"
-                                    className="w-full px-4 py-3 border-2 border-black rounded-2xl focus:outline-none focus:ring-2 focus:ring-black bg-white transition-all font-medium shadow-md"
-                                    value={desc}
-                                    onChange={(e) => {
-                                        setDesc(e.target.value);
-                                        if (error) setError("");
-                                    }}
-                                />
-                            </div>
                             <div>
-                                <label className="block text-sm font-black mb-2 text-black uppercase">Status</label>
-                                <select
-                                    className="w-full px-4 py-3 border-2 border-black rounded-2xl focus:outline-none focus:ring-2 focus:ring-black bg-white transition-all font-medium shadow-md"
-                                    value={itemStatus}
-                                    onChange={(e) => setItemStatus(e.target.value)}
-                                >
-                                    <option value="pending">Pending</option>
-                                    <option value="in-progress">In Progress</option>
-                                    <option value="completed">Completed</option>
-                                </select>
+                                <h1 className="text-3xl font-black text-[#7af2d6]">{listTitle}</h1>
+                                <div className="text-sm text-[#66f0b8] font-mono uppercase tracking-wide">Manage your items</div>
                             </div>
                         </div>
-                        <button
-                            onClick={handleAddItem}
-                            disabled={addingItem}
-                            className="w-full py-4 bg-black text-white hover:bg-gray-900 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl transition-all shadow-lg font-bold text-lg active:scale-[0.98] uppercase border-2 border-black"
-                        >
-                            {addingItem ? 'Adding to list...' : 'Add Task to List'}
-                        </button>
+                        <div>
+                            <button
+                                onClick={() => navigate('/home')}
+                                className="px-4 py-2 bg-gradient-to-r from-[#ff4da6] to-[#66f0b8] text-black rounded-md font-bold shadow-md"
+                            >
+                                Home
+                            </button>
+                        </div>
                     </div>
 
-                    {/* Items Section */}
-                    <div className="bg-white border-4 border-black p-8 rounded-3xl shadow-xl">
-                        <div className="flex justify-between items-center mb-6">
-                            <h2 className="text-2xl font-black text-black">Tasks ({items.length})</h2>
-                            <div className="h-1 flex-1 mx-4 bg-gray-400 rounded-full"></div>
+                    {error && (
+                        <div className="mb-6 px-4 py-3 rounded-md bg-black/40 border border-red-600 text-red-400 font-bold font-mono">{error}</div>
+                    )}
+
+                    {success && (
+                        <div className="mb-6 px-4 py-3 rounded-md bg-black/30 border border-green-600 text-green-300 font-bold font-mono">{success}</div>
+                    )}
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {/* Add Item Section */}
+                        <div className="bg-[#001018] border border-pink-600/10 p-6 rounded-2xl">
+                            <h2 className="text-xl font-black mb-4 text-[#7af2d6] font-mono">Add New Task</h2>
+                            <div className="grid grid-cols-1 gap-4 mb-4">
+                                <div>
+                                    <label className="block text-[11px] text-[#9fffd6] mb-2 uppercase">Description</label>
+                                    <input
+                                        type="text"
+                                        className="w-full bg-[#00161a] text-[#7ef1c9] placeholder-[#2a6a63] px-4 py-3 rounded-md border border-transparent focus:outline-none font-mono"
+                                        value={desc}
+                                        onChange={(e) => { setDesc(e.target.value); if (error) setError(""); }}
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-[11px] text-[#9fffd6] mb-2 uppercase">Status</label>
+                                    <select
+                                        className="w-full bg-[#00161a] text-[#7ef1c9] px-4 py-3 rounded-md border border-transparent focus:outline-none font-mono"
+                                        value={itemStatus}
+                                        onChange={(e) => setItemStatus(e.target.value)}
+                                    >
+                                        <option value="pending">Pending</option>
+                                        <option value="in-progress">In Progress</option>
+                                        <option value="completed">Completed</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button
+                                onClick={handleAddItem}
+                                disabled={addingItem}
+                                className="w-full py-3 bg-gradient-to-r from-[#ff4da6] to-[#66f0b8] text-black font-bold rounded-md shadow-lg uppercase"
+                            >
+                                {addingItem ? 'adding...' : 'Add Task to List'}
+                            </button>
                         </div>
 
-                        {items.length === 0 ? (
-                            <div className="text-center py-12 bg-gray-200 rounded-2xl border-4 border-dashed border-black">
-                                <svg className="w-12 h-12 mx-auto mb-4 text-black" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.707a1 1 0 00-1.414-1.414L9 9.586 7.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
-                                </svg>
-                                <p className="text-black font-bold uppercase">No tasks yet. Ready to start?</p>
+                        {/* Items Section */}
+                        <div className="bg-[#001018] border border-pink-600/10 p-6 rounded-2xl">
+                            <div className="flex justify-between items-center mb-4">
+                                <h2 className="text-xl font-black text-[#7af2d6]">Tasks ({items.length})</h2>
+                                <div className="h-1 flex-1 mx-4 bg-gradient-to-r from-[#ff4da6] to-[#66f0b8] rounded-full" style={{height: '6px'}}></div>
                             </div>
-                        ) : (
-                            <div className="space-y-4">
-                                {items.map((item, idx) => (
-                                    <div key={item.id} className={`${idx % 2 === 0 ? 'bg-white' : 'bg-gray-100'} border-4 border-black p-6 rounded-3xl hover:shadow-lg transition-all group border-l-8 border-l-black`}>
-                                        {editingItem === item.id ? (
-                                            <div className="space-y-4">
-                                                <input
-                                                    type="text"
-                                                    value={editDesc}
-                                                    onChange={(e) => setEditDesc(e.target.value)}
-                                                    className="w-full px-4 py-2 border-2 border-black rounded-2xl focus:outline-none focus:ring-2 focus:ring-black bg-white"
-                                                />
-                                                <div className="flex gap-3">
-                                                    <button
-                                                        onClick={handleSaveEdit}
-                                                        className="flex-1 px-4 py-2 bg-black text-white hover:bg-gray-900 rounded-xl font-bold transition-all border-2 border-black"
-                                                    >
-                                                        Save Changes
-                                                    </button>
-                                                    <button
-                                                        onClick={handleCancelEdit}
-                                                        className="px-4 py-2 bg-gray-300 text-black hover:bg-gray-400 rounded-xl font-bold transition-all border-2 border-black"
-                                                    >
-                                                        Cancel
-                                                    </button>
+
+                            {items.length === 0 ? (
+                                <div className="text-center py-8 bg-transparent rounded-2xl border-2 border-dashed border-pink-600/20">
+                                    <svg className="w-12 h-12 mx-auto mb-4 text-[#7af2d6]" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.707a1 1 0 00-1.414-1.414L9 9.586 7.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                                    </svg>
+                                    <p className="text-[#9fffd6] font-bold uppercase">No tasks yet. Ready to start?</p>
+                                </div>
+                            ) : (
+                                <div className="space-y-4">
+                                    {items.map((item, idx) => (
+                                        <div key={item.id} className={`p-4 rounded-lg border border-pink-600/10 bg-transparent ${idx % 2 === 0 ? '' : 'bg-black/5'}`}>
+                                            {editingItem === item.id ? (
+                                                <div className="space-y-4">
+                                                    <input
+                                                        type="text"
+                                                        value={editDesc}
+                                                        onChange={(e) => setEditDesc(e.target.value)}
+                                                        className="w-full bg-[#00161a] text-[#7ef1c9] px-4 py-2 rounded-md border border-transparent font-mono"
+                                                    />
+                                                    <div className="flex gap-3">
+                                                        <button
+                                                            onClick={handleSaveEdit}
+                                                            className="flex-1 px-4 py-2 bg-gradient-to-r from-[#ff4da6] to-[#66f0b8] text-black rounded-md font-bold"
+                                                        >
+                                                            Save Changes
+                                                        </button>
+                                                        <button
+                                                            onClick={handleCancelEdit}
+                                                            className="px-4 py-2 bg-transparent text-[#9fffd6] rounded-md border border-cyan-400/10 font-bold"
+                                                        >
+                                                            Cancel
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        ) : (
-                                            <div className="flex justify-between items-start gap-4">
-                                                <div className="flex-1">
-                                                    <p className={`text-lg font-bold mb-2 ${item.status === 'completed' ? 'text-gray-400 line-through' : 'text-black'}`}>
-                                                        {item.description}
-                                                    </p>
-                                                    <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider border-2 border-black ${item.status === 'completed' ? 'bg-green-300 text-black' :
-                                                        item.status === 'in-progress' ? 'bg-blue-300 text-black' :
-                                                            'bg-yellow-300 text-black'
-                                                        }`}>
-                                                        {item.status}
-                                                    </span>
+                                            ) : (
+                                                <div className="flex justify-between items-start gap-4">
+                                                    <div className="flex-1">
+                                                        <p className={`text-lg font-bold mb-2 ${item.status === 'completed' ? 'text-gray-400 line-through' : 'text-[#c7f7e9]'}`}>
+                                                            {item.description}
+                                                        </p>
+                                                        <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${item.status === 'completed' ? 'bg-green-500/20 text-[#9fffd6] border border-green-400/20' :
+                                                            item.status === 'in-progress' ? 'bg-blue-500/20 text-[#9fffd6] border border-blue-400/20' :
+                                                            'bg-yellow-500/20 text-[#9fffd6] border border-yellow-400/20'}`}>
+                                                            {item.status}
+                                                        </span>
+                                                    </div>
+                                                    <div className="flex gap-2 opacity-100 transition-opacity">
+                                                        <button
+                                                            onClick={() => handleEditClick(item)}
+                                                            className="px-3 py-2 bg-gradient-to-r from-[#ff4da6] to-[#66f0b8] text-black rounded-md font-bold"
+                                                            title="Edit Task"
+                                                        >
+                                                            Edit
+                                                        </button>
+                                                        <button
+                                                            onClick={() => handleDeleteItem(item.id)}
+                                                            className="px-3 py-2 bg-red-500/10 text-[#ffd3a0] rounded-md border border-red-400/10 font-bold"
+                                                            title="Delete Task"
+                                                        >
+                                                            Delete
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                                <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                    <button
-                                                        onClick={() => handleEditClick(item)}
-                                                        className="p-2 bg-gray-300 text-black hover:bg-gray-400 rounded-xl transition-all border-2 border-black"
-                                                        title="Edit Task"
-                                                    >
-                                                        <span className="text-sm px-1 font-bold">Edit</span>
-                                                    </button>
-                                                    <button
-                                                        onClick={() => handleDeleteItem(item.id)}
-                                                        className="p-2 bg-red-300 text-black hover:bg-red-400 rounded-xl transition-all border-2 border-black"
-                                                        title="Delete Task"
-                                                    >
-                                                        <span className="text-sm px-1 font-bold">Delete</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        )}
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
